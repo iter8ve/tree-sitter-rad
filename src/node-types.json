@@ -2109,6 +2109,10 @@
           "named": true
         },
         {
+          "type": "shebang",
+          "named": true
+        },
+        {
           "type": "switch_statement",
           "named": true
         },
@@ -2695,11 +2699,11 @@
   },
   {
     "type": "float",
-    "named": false
+    "named": true
   },
   {
     "type": "float",
-    "named": true
+    "named": false
   },
   {
     "type": "fn",
@@ -2768,6 +2772,10 @@
   {
     "type": "return",
     "named": false
+  },
+  {
+    "type": "shebang",
+    "named": true
   },
   {
     "type": "sort",

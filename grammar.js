@@ -30,7 +30,12 @@ module.exports = grammar({
   ],
 
   rules: {
-    source_file: $ => repeat($._statement),
+    source_file: $ => seq(
+      optional($.shebang),
+      repeat($._statement),
+    ),
+
+    shebang: $ => token(seq('#!', /.*/)),
 
     _statement: $ => choice(
       $._simple_statement,
