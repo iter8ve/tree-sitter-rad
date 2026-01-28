@@ -1,41 +1,44 @@
 ; Keywords
 [
   "args"
-  "rad"
-  "display"
-  "request"
   "fn"
   "if"
   "else"
   "for"
   "while"
   "in"
-  "switch"
-  "case"
-  "default"
   "return"
   "yield"
   "break"
   "continue"
   "pass"
-  "defer"
   "del"
+  "switch"
+  "case"
+  "default"
+  "defer"
+  "errdefer"
   "catch"
+  "rad"
+  "request"
+  "display"
+  "fields"
+  "sort"
+  "filter"
+  "map"
+  "color"
 ] @keyword
+
+[
+  "asc"
+  "desc"
+] @keyword.modifier
 
 [
   "and"
   "or"
   "not"
 ] @keyword.operator
-
-; Modifiers
-[
-  "fields"
-  "sort"
-  "asc"
-  "desc"
-] @keyword.modifier
 
 ; Types
 (simple_type) @type.builtin
@@ -51,6 +54,8 @@
 (call_expression
   function: (attribute
     attribute: (identifier) @function.method.call))
+
+(anonymous_function) @function
 
 ; Parameters
 (parameter
@@ -77,8 +82,6 @@
 
 ; Comments
 (comment) @comment
-(arg_comment) @comment.documentation
-(doc_block) @comment.documentation
 
 ; Operators
 [
@@ -103,6 +106,7 @@
   "->"
   "++"
   "--"
+  "?"
 ] @operator
 
 ; Punctuation
@@ -121,13 +125,16 @@
   "."
 ] @punctuation.delimiter
 
-; Shell commands
-(shell_command) @string.special
-(shell_content) @string.special
-
-; Special
-(shebang) @keyword.directive
-
 ; Argument definitions
 (arg_definition
   (identifier) @variable.parameter)
+
+; Field references in rad blocks
+(fields_clause
+  (identifier) @property)
+
+(sort_clause
+  (identifier) @property)
+
+(field_modifier
+  (identifier) @property)
