@@ -196,7 +196,7 @@ module.exports = grammar({
     subscript: $ => prec(10, seq($._expression, '[', choice($._expression, $.slice), ']')),
     slice: $ => seq(optional($._expression), ':', optional($._expression)),
 
-    attribute: $ => prec(10, seq($._expression, '.', $.identifier)),
+    attribute: $ => prec(10, seq(field('object', $._expression), '.', field('attribute', $.identifier))),
 
     list_comprehension: $ => seq('[', $._expression, 'for', $.pattern, 'in', $._expression, optional(seq('if', $._expression)), ']'),
 
